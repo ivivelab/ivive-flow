@@ -1,140 +1,185 @@
-import Link from "next/link";
+export default function ConsultingPage() {
+  const pains = [
+    "반복 상담",
+    "예약 누락",
+    "문서 정리",
+    "고객 응대",
+    "수작업 입력",
+    "보고서 작성",
+  ];
 
-export default function ServicesPage() {
-  const services = [
+  const process = [
     {
-      title: "예약 자동화",
-      desc: "예약 접수부터 알림까지 자동화",
-      href: "#",
+      step: "01",
+      title: "현황 분석",
+      desc: "현재 업무 흐름과 운영 구조를 파악합니다.",
     },
     {
-      title: "상담 자동화",
-      desc: "문의 접수와 상담 프로세스 자동화",
-      href: "#",
+      step: "02",
+      title: "병목 진단",
+      desc: "시간과 비용이 낭비되는 구간을 찾습니다.",
     },
     {
-      title: "고객관리",
-      desc: "고객 데이터를 체계적으로 관리",
-      href: "#",
+      step: "03",
+      title: "자동화 설계",
+      desc: "우선순위와 개선 방안을 정의합니다.",
     },
     {
-      title: "견적 · 계약",
-      desc: "견적서와 계약서 업무 자동화",
-      href: "#",
-    },
-    {
-      title: "결제 자동화",
-      desc: "결제 및 정산 프로세스 자동화",
-      href: "#",
-    },
-    {
-      title: "통합 구축",
-      desc: "업무 흐름 전체를 하나로 연결",
-      href: "#",
+      step: "04",
+      title: "구축 로드맵",
+      desc: "실행 가능한 계획을 제공합니다.",
     },
   ];
 
   return (
     <main>
 
-      {/* Hero */}
-      <section className="relative flex h-[50vh] items-center justify-center bg-black text-white">
-        <div className="text-center px-6">
-          <h1 className="text-4xl md:text-6xl font-bold">
+      <section className="bg-black text-white">
+        <div className="mx-auto max-w-6xl px-6 py-32 text-center">
+
+          <span className="rounded-full border border-white/20 px-4 py-2 text-sm text-zinc-400">
             Consulting
+          </span>
+
+          <h1 className="mt-8 text-5xl font-bold md:text-7xl">
+            운영의 병목을 찾고
+            <br />
+            자동화를 설계합니다
           </h1>
 
-          <p className="mt-6 text-lg md:text-2xl text-zinc-300">
-            예약부터 결제까지,
-            <br />
-            하나의 업무 흐름으로 자동화합니다.
+          <p className="mx-auto mt-8 max-w-3xl text-lg text-zinc-400">
+            AI를 도입하기 전에 무엇을 자동화해야 하는지부터 정의합니다.
           </p>
+
         </div>
       </section>
 
-{/* Consulting Service */}
-{/* Consulting */}
-<section className="mx-auto max-w-7xl px-6 py-24">
+      <section className="mx-auto max-w-7xl px-6 py-32">
 
-  <div className="text-center mb-20">
-    <h2 className="text-4xl md:text-6xl font-bold">
-      컨설팅 서비스
-    </h2>
+        <div className="text-center">
+          <h2 className="text-4xl font-bold">
+            이런 문제가 있다면
+          </h2>
+        </div>
 
-    <p className="mt-6 text-lg text-zinc-600">
-      운영 흐름을 분석하고
-      가장 효율적인 자동화 전략을 제안합니다.
-    </p>
-  </div>
+        <div className="mt-16 grid gap-6 md:grid-cols-3">
 
-  <div className="overflow-hidden rounded-[40px] bg-zinc-100">
+          {pains.map((item) => (
+            <div
+              key={item}
+              className="rounded-3xl border p-8 text-center"
+            >
+              {item}
+            </div>
+          ))}
 
-    <div className="grid lg:grid-cols-2">
+        </div>
 
-      {/* Image */}
-      <div>
-        <img
-          src="/images/consulting.jpg"
-          alt="컨설팅"
-          className="h-full w-full object-cover"
-        />
-      </div>
+      </section>
 
-      {/* Content */}
-      <div className="flex flex-col justify-center px-10 py-16 lg:px-20">
+      <section className="bg-zinc-50 py-32">
 
-        <span className="text-sm font-medium text-blue-600">
-          Business Consulting
-        </span>
+        <div className="mx-auto max-w-6xl px-6 text-center">
 
-        <h3 className="mt-4 text-4xl font-bold leading-tight">
-          운영의 병목을 발견하고
-          <br />
-          자동화를 설계합니다.
-        </h3>
+          <h2 className="text-4xl font-bold">
+            문제는 AI가 아닙니다
+          </h2>
 
-        <p className="mt-8 text-lg leading-8 text-zinc-600">
-          상담, 예약, CRM, 문서 업무를 분석하여
-          비효율적인 운영 구조를 진단하고
-          데이터 기반의 개선 전략을 제안합니다.
-        </p>
+          <p className="mx-auto mt-6 max-w-2xl text-zinc-600">
+            대부분의 비효율은 정리되지 않은 업무 흐름에서 발생합니다.
+          </p>
 
-        <div className="mt-10 grid grid-cols-2 gap-8">
+          <div className="mt-20 flex flex-wrap items-center justify-center gap-4 text-sm md:text-base">
 
-          <div>
-            <p className="text-3xl font-bold">
-              Process
-            </p>
-            <p className="text-zinc-500">
-              운영 프로세스 분석
-            </p>
-          </div>
+            <div className="rounded-full border px-5 py-3">
+              고객 문의
+            </div>
 
-          <div>
-            <p className="text-3xl font-bold">
-              Data
-            </p>
-            <p className="text-zinc-500">
-              데이터 기반 진단
-            </p>
+            <span>→</span>
+
+            <div className="rounded-full border px-5 py-3">
+              직원 전달
+            </div>
+
+            <span>→</span>
+
+            <div className="rounded-full border px-5 py-3">
+              엑셀 입력
+            </div>
+
+            <span>→</span>
+
+            <div className="rounded-full border px-5 py-3">
+              카톡 전송
+            </div>
+
+            <span>→</span>
+
+            <div className="rounded-full border px-5 py-3">
+              전화 확인
+            </div>
+
           </div>
 
         </div>
 
-        <Link
-          href="/contact"
-          className="mt-10 text-blue-600 font-medium"
-        >
-          상담 신청하기 →
-        </Link>
+      </section>
 
-      </div>
+      <section className="mx-auto max-w-7xl px-6 py-32">
 
-    </div>
+        <div className="text-center">
+          <h2 className="text-4xl font-bold">
+            컨설팅 진행 방식
+          </h2>
+        </div>
 
-  </div>
+        <div className="mt-20 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
 
-</section>
+          {process.map((item) => (
+            <div
+              key={item.step}
+              className="rounded-3xl border p-8"
+            >
+              <div className="text-4xl font-bold text-blue-600">
+                {item.step}
+              </div>
+
+              <h3 className="mt-6 text-xl font-semibold">
+                {item.title}
+              </h3>
+
+              <p className="mt-3 text-zinc-600">
+                {item.desc}
+              </p>
+            </div>
+          ))}
+
+        </div>
+
+      </section>
+
+      <section className="bg-black py-32 text-white">
+
+        <div className="mx-auto max-w-4xl px-6 text-center">
+
+          <h2 className="text-4xl font-bold md:text-6xl">
+            자동화는 도구가 아니라
+            <br />
+            운영 전략입니다
+          </h2>
+
+          <p className="mt-8 text-zinc-400">
+            무료 상담을 통해 자동화 가능 영역을 확인해보세요.
+          </p>
+
+          <button className="mt-10 rounded-2xl bg-white px-8 py-4 font-semibold text-black">
+            무료 진단 신청
+          </button>
+
+        </div>
+
+      </section>
+
     </main>
   );
 }

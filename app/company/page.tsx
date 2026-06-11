@@ -1,231 +1,312 @@
 import Link from "next/link";
 
-export default function ServicesPage() {
-  const services = [
+export default function AboutPage() {
+  const principles = [
     {
-      title: "예약 자동화",
-      desc: "예약 접수부터 알림까지 자동화",
-      href: "#",
+      title: "AI보다 프로세스",
+      desc: "좋은 AI보다 좋은 업무 흐름이 먼저입니다.",
     },
     {
-      title: "상담 자동화",
-      desc: "문의 접수와 상담 프로세스 자동화",
-      href: "#",
+      title: "기능보다 결과",
+      desc: "기능 수보다 실제 업무 감소가 중요합니다.",
     },
     {
-      title: "고객관리",
-      desc: "고객 데이터를 체계적으로 관리",
-      href: "#",
+      title: "데이터 기반",
+      desc: "감이 아닌 데이터로 의사결정을 지원합니다.",
     },
     {
-      title: "견적 · 계약",
-      desc: "견적서와 계약서 업무 자동화",
-      href: "#",
-    },
-    {
-      title: "결제 자동화",
-      desc: "결제 및 정산 프로세스 자동화",
-      href: "#",
-    },
-    {
-      title: "통합 구축",
-      desc: "업무 흐름 전체를 하나로 연결",
-      href: "#",
+      title: "지속 가능한 자동화",
+      desc: "운영할수록 더 효율적인 시스템을 만듭니다.",
     },
   ];
 
   return (
-    <main>
+    <main className="bg-white">
 
       {/* Hero */}
-      <section className="relative flex h-[50vh] items-center justify-center bg-black text-white">
-        <div className="text-center px-6">
-          <h1 className="text-4xl md:text-6xl font-bold">
-            About Us
-          </h1>
+      <section className="relative overflow-hidden bg-black text-white">
 
-          <p className="mt-6 text-lg md:text-2xl text-zinc-300">
-            기술과 경험으로,
-            <br />
-            비즈니스의 성장을 설계합니다.
-          </p>
+        <div className="absolute left-1/2 top-20 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-blue-600/20 blur-[180px]" />
+
+        <div className="relative mx-auto flex min-h-[80vh] max-w-6xl items-center justify-center px-6 text-center">
+
+          <div>
+
+            <span className="rounded-full border border-white/20 px-4 py-2 text-sm text-zinc-300">
+              About FlowOS
+            </span>
+
+            <h1 className="mt-8 text-5xl font-bold leading-tight md:text-7xl">
+              우리는 AI를 판매하지 않습니다.
+              <br />
+              운영의 낭비를 줄입니다.
+            </h1>
+
+            <p className="mx-auto mt-10 max-w-3xl text-lg text-zinc-400 md:text-xl">
+              기업이 성장하지 못하는 이유는
+              기술 부족이 아니라
+              반복 업무와 복잡한 의사결정 때문입니다.
+            </p>
+
+          </div>
+
         </div>
+
       </section>
 
-{/* Consulting Service */}
-<section className="py-40">
+      {/* Philosophy */}
+      <section className="py-40">
 
-  <div className="mx-auto max-w-5xl text-center">
+        <div className="mx-auto max-w-5xl px-6 text-center">
 
-    <p className="text-blue-600 font-medium">
-      About FlowOS
-    </p>
+          <span className="text-blue-600 font-medium">
+            Philosophy
+          </span>
 
-    <h1 className="mt-6 text-5xl md:text-7xl font-bold tracking-tight">
-      운영을 이해하는 사람이
-      <br />
-      자동화를 설계합니다.
-    </h1>
+          <h2 className="mt-6 text-5xl font-bold md:text-7xl">
+            문제는 기술이 아닙니다
+          </h2>
 
-    <p className="mt-8 text-xl text-zinc-600 max-w-3xl mx-auto">
-      FlowOS는 단순한 챗봇이나 웹사이트가 아닙니다.
-      실제 현장에서 발생하는 운영 문제를 분석하고
-      업무 프로세스를 자동화하는 운영 플랫폼입니다.
-    </p>
+          <p className="mx-auto mt-10 max-w-3xl text-xl leading-relaxed text-zinc-600">
+            대부분의 기업은 새로운 도구가 부족한 것이 아닙니다.
+            <br />
+            같은 정보를 찾고,
+            같은 질문에 답하고,
+            같은 문서를 반복 작성하는 구조가 문제입니다.
+            <br />
+            <br />
+            우리는 기술을 추가하는 것이 아니라
+            운영을 단순하게 만드는 데 집중합니다.
+          </p>
 
-  </div>
+        </div>
 
-</section>
+      </section>
 
-<section className="mx-auto max-w-7xl px-6 pb-24">
+      {/* Mission */}
+      <section className="mx-auto max-w-7xl px-6 pb-32">
 
-  <div className="rounded-[40px] bg-zinc-100 p-12 md:p-20">
+        <div className="rounded-[48px] bg-zinc-100 p-12 md:p-20">
 
-    <span className="text-blue-600">
-      Mission
-    </span>
+          <span className="text-blue-600 font-medium">
+            Mission
+          </span>
 
-    <h2 className="mt-4 text-4xl md:text-6xl font-bold">
-      반복 업무를 줄이고
-      본질적인 성장에 집중하도록.
-    </h2>
+          <h2 className="mt-4 text-4xl font-bold md:text-6xl">
+            반복 업무를 줄이고
+            <br />
+            본질적인 성장에 집중하도록
+          </h2>
 
-    <p className="mt-8 text-lg text-zinc-600 max-w-3xl">
-      상담, 예약, 고객관리, 문서업무.
-      기업이 매일 반복하는 업무를 자동화하여
-      더 중요한 일에 집중할 수 있도록 돕습니다.
-    </p>
+          <p className="mt-8 max-w-3xl text-lg text-zinc-600">
+            상담, 예약, 고객관리, 문서작성.
+            기업이 매일 반복하는 업무를 자동화하여
+            더 중요한 의사결정과 성장에 집중할 수 있도록 돕습니다.
+          </p>
 
-  </div>
+        </div>
 
-</section>
+      </section>
 
-<section className="mx-auto max-w-7xl px-6 py-20">
+      {/* Founder Story */}
+      <section className="py-32">
 
-  <div className="grid gap-6 lg:grid-cols-2">
+        <div className="mx-auto max-w-7xl px-6">
 
-    <div className="rounded-[32px] bg-zinc-100 p-10">
-      <h3 className="text-3xl font-bold">
-        운영 중심
-      </h3>
+          <div className="grid gap-16 lg:grid-cols-2 items-center">
 
-      <p className="mt-4 text-zinc-600">
-        기술보다 운영 문제 해결을 우선합니다.
-      </p>
-    </div>
+            <div>
 
-    <div className="rounded-[32px] bg-zinc-100 p-10">
-      <h3 className="text-3xl font-bold">
-        데이터 기반
-      </h3>
+              <span className="text-blue-600">
+                Why FlowOS
+              </span>
 
-      <p className="mt-4 text-zinc-600">
-        감이 아닌 데이터로 의사결정을 지원합니다.
-      </p>
-    </div>
+              <h2 className="mt-4 text-4xl font-bold md:text-6xl">
+                왜 FlowOS를
+                만들었는가
+              </h2>
 
-    <div className="rounded-[32px] bg-zinc-100 p-10">
-      <h3 className="text-3xl font-bold">
-        자동화 우선
-      </h3>
+              <p className="mt-8 text-lg leading-relaxed text-zinc-600">
+                16년 동안 공공기관, 의료, 보안,
+                플랫폼 구축 프로젝트를 수행하며
+                한 가지 공통점을 발견했습니다.
+              </p>
 
-      <p className="mt-4 text-zinc-600">
-        반복 업무를 최소화하고 생산성을 높입니다.
-      </p>
-    </div>
+              <p className="mt-6 text-lg leading-relaxed text-zinc-600">
+                대부분의 기업은 사람이 부족한 것이 아니라
+                시스템이 부족했습니다.
+              </p>
 
-    <div className="rounded-[32px] bg-zinc-100 p-10">
-      <h3 className="text-3xl font-bold">
-        지속적인 개선
-      </h3>
+              <p className="mt-6 text-lg leading-relaxed text-zinc-600">
+                직원들은 반복 업무에 시간을 사용했고,
+                고객은 기다렸으며,
+                중요한 의사결정은 늦어졌습니다.
+              </p>
 
-      <p className="mt-4 text-zinc-600">
-        운영 데이터가 쌓일수록 더 똑똑해집니다.
-      </p>
-    </div>
+              <p className="mt-6 text-lg leading-relaxed text-zinc-600">
+                우리는 그 문제를 자동화와 데이터로
+                해결하기 위해 FlowOS를 만들었습니다.
+              </p>
 
-  </div>
+            </div>
 
-</section>
+            <div>
 
-<section className="py-32">
+              <div className="overflow-hidden rounded-[40px] bg-zinc-100">
 
-  <div className="mx-auto max-w-7xl px-6">
+                <img
+                  src="/images/about-founder.jpg"
+                  alt="Founder"
+                  className="h-full w-full object-cover"
+                />
 
-    <div className="grid lg:grid-cols-2 gap-16 items-center">
+              </div>
 
-      <div>
-        <img
-          src="/images/about-founder.jpg"
-          alt="Founder"
-          className="rounded-[40px]"
-        />
-      </div>
+            </div>
 
-      <div>
-
-        <span className="text-blue-600">
-          Experience
-        </span>
-
-        <h2 className="mt-4 text-5xl font-bold">
-          16년의 현장 경험을
-          자동화에 담았습니다.
-        </h2>
-
-        <p className="mt-8 text-lg text-zinc-600">
-          공공기관, 의료, 보안,
-          플랫폼 구축 프로젝트를 수행하며
-          실제 운영 환경에서 발생하는 문제를
-          데이터 기반으로 분석해 왔습니다.
-        </p>
-
-        <div className="grid grid-cols-2 gap-8 mt-12">
-
-          <div>
-            <p className="text-5xl font-bold">16+</p>
-            <p>Years Experience</p>
-          </div>
-
-          <div>
-            <p className="text-5xl font-bold">100+</p>
-            <p>Projects</p>
           </div>
 
         </div>
 
-      </div>
+      </section>
 
-    </div>
+      {/* Principles */}
+      <section className="bg-zinc-50 py-32">
 
-  </div>
+        <div className="mx-auto max-w-7xl px-6">
 
-</section>
+          <div className="text-center">
 
-<section className="py-32">
+            <span className="text-blue-600">
+              Principles
+            </span>
 
-  <div className="mx-auto max-w-5xl text-center">
+            <h2 className="mt-4 text-4xl font-bold md:text-6xl">
+              우리가 믿는 원칙
+            </h2>
 
-    <h2 className="text-5xl font-bold">
-      비즈니스 운영을
-      다시 설계해보세요.
-    </h2>
+          </div>
 
-    <p className="mt-6 text-xl text-zinc-600">
-      상담부터 예약, 고객관리까지.
-      운영 전반을 분석하고 자동화를 설계합니다.
-    </p>
+          <div className="mt-20 grid gap-6 md:grid-cols-2">
 
-    <Link
-      href="/contact"
-      className="inline-flex mt-10 rounded-full bg-black text-white px-8 py-4"
-    >
-      상담 신청하기
-    </Link>
+            {principles.map((item) => (
+              <div
+                key={item.title}
+                className="rounded-[32px] bg-white p-10"
+              >
+                <h3 className="text-3xl font-bold">
+                  {item.title}
+                </h3>
 
-  </div>
+                <p className="mt-4 text-zinc-600">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
 
-</section>
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* Stats */}
+      <section className="py-32">
+
+        <div className="mx-auto max-w-7xl px-6">
+
+          <div className="grid gap-6 md:grid-cols-4">
+
+            <div className="rounded-[32px] border p-10 text-center">
+              <div className="text-5xl font-bold">
+                16+
+              </div>
+
+              <p className="mt-4 text-zinc-500">
+                Years Experience
+              </p>
+            </div>
+
+            <div className="rounded-[32px] border p-10 text-center">
+              <div className="text-5xl font-bold">
+                100+
+              </div>
+
+              <p className="mt-4 text-zinc-500">
+                Projects
+              </p>
+            </div>
+
+            <div className="rounded-[32px] border p-10 text-center">
+              <div className="text-5xl font-bold">
+                15+
+              </div>
+
+              <p className="mt-4 text-zinc-500">
+                Industries
+              </p>
+            </div>
+
+            <div className="rounded-[32px] border p-10 text-center">
+              <div className="text-5xl font-bold">
+                24H
+              </div>
+
+              <p className="mt-4 text-zinc-500">
+                Automation
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* Quote */}
+      <section className="py-32">
+
+        <div className="mx-auto max-w-5xl px-6 text-center">
+
+          <h2 className="text-4xl font-bold md:text-6xl leading-tight">
+            성장은 더 열심히 하는 것이 아니라
+            <br />
+            더 적게 반복하는 것에서 시작됩니다.
+          </h2>
+
+        </div>
+
+      </section>
+
+      {/* CTA */}
+      <section className="pb-32">
+
+        <div className="mx-auto max-w-6xl px-6">
+
+          <div className="rounded-[48px] bg-black p-16 text-center text-white">
+
+            <h2 className="text-4xl font-bold md:text-6xl">
+              운영을 다시 설계해보세요
+            </h2>
+
+            <p className="mt-8 text-lg text-zinc-400">
+              상담부터 예약, 고객관리까지.
+              운영 전반을 분석하고 자동화를 설계합니다.
+            </p>
+
+            <Link
+              href="/contact"
+              className="mt-10 inline-flex rounded-full bg-white px-8 py-4 font-semibold text-black transition hover:scale-105"
+            >
+              무료 상담 신청
+            </Link>
+
+          </div>
+
+        </div>
+
+      </section>
+
     </main>
   );
 }
