@@ -1,21 +1,21 @@
 import Hero from "@/components/sections/Hero";
-import Category from "@/components/sections/Category";
+import WorkflowBar from "@/components/sections/WorkflowBar";
 import New from "@/components/sections/New";
-import Best from "@/components/sections/Best";
+import Category from "@/components/sections/Category";
+import Problem from "@/components/sections/Problem";
+import Process from "@/components/sections/Process";
 import Story from "@/components/sections/Story";
-import Notice from "@/components/sections/Notice";
-import Stores from "@/components/sections/Stores";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <Category />
+      <WorkflowBar />
       <New />
-      <Best />
+      <Category />
+      <Problem />
+      <Process />
       <Story />
-      <Notice />
-      <Stores />
     </>
   );
 }

@@ -44,39 +44,23 @@ export default function StartupPage() {
     <main>
       {/* Hero */}
       <section className="relative overflow-hidden bg-black text-white">
-        <div className="absolute left-1/2 top-20 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-blue-600/20 blur-[180px]" />
+        <div className="absolute left-1/2 top-20 h-[400px] w-[400px] -translate-x-1/2 rounded-full bg-blue-600/20 blur-[140px]" />
 
-        <div className="relative mx-auto flex min-h-[80vh] max-w-6xl items-center justify-center px-6 text-center">
+        <div className="relative mx-auto flex min-h-[50vh] max-w-6xl items-center justify-center px-6 text-center">
           <div>
             <span className="rounded-full border border-white/20 px-4 py-2 text-sm text-zinc-300">
               Startup Kit
             </span>
 
-            <h1 className="mt-8 text-5xl font-bold leading-tight md:text-7xl">
+            <h1 className="mt-8 text-5xl font-bold md:text-7xl">
               혼자 시작해도 됩니다
             </h1>
 
-            <p className="mx-auto mt-8 max-w-3xl text-lg text-zinc-400 md:text-xl">
+            <p className="mx-auto mt-8 max-w-2xl text-lg text-zinc-400 md:text-xl">
               창업 초기 반복 업무를 줄이는
               <br />
               실전 자동화 템플릿과 시스템
             </p>
-
-            <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <Link
-                href="#products"
-                className="rounded-2xl bg-white px-6 py-4 font-semibold text-black"
-              >
-                템플릿 보기
-              </Link>
-
-              <Link
-                href="#"
-                className="rounded-2xl border border-white/20 px-6 py-4"
-              >
-                무료 자료 받기
-              </Link>
-            </div>
           </div>
         </div>
       </section>

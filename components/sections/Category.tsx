@@ -1,151 +1,155 @@
-export default function Category() {
-  const items = [
-    {
-      name: "예약",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="28"
-          height="28"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
-          <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
-          <path d="M16 3v4" />
-          <path d="M8 3v4" />
-          <path d="M4 11h16" />
-        </svg>
-      ),
-    },
+import {
+  BarChart3,
+  ShieldCheck,
+  Users,
+  Workflow,
+} from "lucide-react";
 
-    {
-      name: "상담",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="28"
-          height="28"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
-          <path d="M8 9h8" />
-          <path d="M8 13h6" />
-          <path d="M5 18l-1 4l4 -1h10a3 3 0 0 0 3 -3v-11a3 3 0 0 0 -3 -3h-11a3 3 0 0 0 -3 3v11a3 3 0 0 0 3 3" />
-        </svg>
-      ),
-    },
+const features = [
+  {
+    icon: Workflow,
+    title: "업무 자동화",
+    desc: "반복적인 업무를 자동화하여 더 중요한 일에 집중하세요.",
+  },
+  {
+    icon: BarChart3,
+    title: "실시간 대시보드",
+    desc: "업무 데이터를 실시간으로 확인하고 빠르게 의사결정하세요.",
+  },
+  {
+    icon: Users,
+    title: "팀 협업 도구",
+    desc: "상담부터 관리까지 하나의 워크플로우로 연결합니다.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "보안 & 안정성",
+    desc: "안전한 데이터 관리와 안정적인 운영 환경을 제공합니다.",
+  },
+];
 
-    {
-      name: "고객",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="28"
-          height="28"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
-          <path d="M8 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
-          <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-        </svg>
-      ),
-    },
-
-    {
-      name: "견적",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="28"
-          height="28"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
-          <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-          <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
-        </svg>
-      ),
-    },
-
-    {
-      name: "결제",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="28"
-          height="28"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
-          <rect x="3" y="5" width="18" height="14" rx="3" />
-          <path d="M3 10h18" />
-        </svg>
-      ),
-    },
-
-    {
-      name: "통합",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="28"
-          height="28"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
-          <path d="M12 6v12" />
-          <path d="M6 12h12" />
-          <circle cx="12" cy="12" r="9" />
-        </svg>
-      ),
-    },
-  ];
-
+export default function FeatureSection() {
   return (
-    <section className="mx-auto max-w-5xl py-24">
+    <section className="py-16 px-6">
+      <div
+        className="
+          max-w-7xl
+          mx-auto
+          rounded-[32px]
+          bg-gradient-to-br
+          from-indigo-50
+          to-slate-50
+          p-8
+          md:p-14
+        "
+      >
+        <div className="grid lg:grid-cols-5 gap-10 items-center">
 
-      <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6">
+          {/* LEFT */}
+          <div className="lg:col-span-2">
 
-        {items.map((item) => (
-          <div
-            key={item.name}
-            className="
-              group
-              rounded-3xl
-              border
-              border-zinc-200
-              p-6
-              text-center
-              transition-all
-              hover:-translate-y-1
-              hover:border-black
-              hover:shadow-lg
-            "
-          >
-            <div className="flex justify-center text-zinc-800">
-              {item.icon}
+            <span
+              className="
+                inline-flex
+                items-center
+                px-4
+                py-2
+                rounded-full
+                bg-white
+                text-indigo-600
+                text-sm
+                font-medium
+                shadow-sm
+              "
+            >
+              FlowOS 핵심 기능
+            </span>
+
+            <h2 className="mt-6 text-4xl md:text-5xl font-bold leading-tight">
+              일을 더 쉽게,
+              <br />
+              성과는 더 크게
+            </h2>
+
+            <p className="mt-6 text-zinc-600 leading-relaxed">
+              FlowOS는 반복 업무를 줄이고
+              상담, 예약, 고객관리, 운영 데이터를
+              하나의 시스템으로 연결합니다.
+            </p>
+
+            <button
+              className="
+                mt-8
+                px-6
+                py-3
+                rounded-xl
+                border
+                border-zinc-300
+                bg-white
+                hover:shadow-md
+                transition
+              "
+            >
+              모든 기능 보기
+            </button>
+
+          </div>
+
+          {/* RIGHT */}
+          <div className="lg:col-span-3">
+
+            <div className="grid md:grid-cols-2 gap-4">
+
+              {features.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <div
+                    key={item.title}
+                    className="
+                      bg-white
+                      rounded-3xl
+                      p-8
+                      border
+                      border-zinc-100
+                      hover:shadow-lg
+                      transition
+                    "
+                  >
+                    <div
+                      className="
+                        w-14
+                        h-14
+                        rounded-full
+                        bg-indigo-50
+                        flex
+                        items-center
+                        justify-center
+                      "
+                    >
+                      <Icon
+                        size={28}
+                        className="text-indigo-600"
+                      />
+                    </div>
+
+                    <h3 className="mt-6 text-xl font-semibold">
+                      {item.title}
+                    </h3>
+
+                    <p className="mt-3 text-zinc-500 leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                );
+              })}
+
             </div>
 
-            <p className="mt-4 font-medium">
-              {item.name}
-            </p>
           </div>
-        ))}
 
+        </div>
       </div>
-
     </section>
   );
 }

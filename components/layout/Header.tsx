@@ -6,38 +6,89 @@ import Link from "next/link";
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const menus = [
+    {
+      name: "솔루션",
+      href: "/solutions",
+    },
+    {
+      name: "업종별 템플릿",
+      href: "/templates",
+    },
+    {
+      name: "구축사례",
+      href: "/cases",
+    },
+    {
+      name: "창업패키지",
+      href: "/startup",
+    },
+    {
+      name: "고객지원",
+      href: "/support",
+    },
+  ];
+
   return (
     <>
-      <header className="fixed top-0 left-0 z-50 h-16 w-full bg-white/95 backdrop-blur">
+      <header className="fixed top-0 left-0 z-50 h-16 w-full bg-white/95 backdrop-blur border-b border-zinc-100">
         <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 md:px-8">
-          
+
+          {/* Logo */}
           <Link href="/">
-            <h1 className="text-xl font-semibold cursor-pointer">
-               IVIVE
+            <h1 className="cursor-pointer text-xl font-bold tracking-tight">
+              IVIVE
             </h1>
           </Link>
 
-          {/* Desktop Menu */}
-          <nav className="hidden md:flex items-center gap-8">
-            <Link href="/services">서비스</Link>
-            <Link href="/cases">사례</Link>
-            <Link href="/consulting">컨설팅</Link>
-            <Link href="/startup">창업</Link>
-            <Link href="/support">고객센터</Link>
-            <Link href="/company">회사소개</Link>
+          {/* Desktop */}
+          <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
+            {menus.map((menu) => (
+              <Link
+                key={menu.name}
+                href={menu.href}
+                className="
+                  transition-colors
+                  hover:text-zinc-500
+                "
+              >
+                {menu.name}
+              </Link>
+            ))}
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* Right CTA */}
+          <div className="hidden md:flex items-center gap-3">
+            <Link
+              href="/consult"
+              className="
+                rounded-full
+                bg-black
+                px-5
+                py-2
+                text-sm
+                font-medium
+                text-white
+                transition
+                hover:opacity-90
+              "
+            >
+              무료 상담
+            </Link>
+          </div>
+
+          {/* Mobile Button */}
           <button
             onClick={() => setMenuOpen(true)}
             className="md:hidden text-sm font-medium tracking-widest"
           >
             MENU
           </button>
+
         </div>
       </header>
 
-      {/* Mobile Overlay */}
+      {/* Mobile Menu */}
       <div
         className={`fixed inset-0 z-[999] bg-white transition-all duration-300 ${
           menuOpen
@@ -46,10 +97,10 @@ export default function Header() {
         }`}
       >
         <div className="flex h-full flex-col">
-          
+
           {/* Top */}
-          <div className="flex h-16 items-center justify-between px-6 border-b">
-            <h1 className="text-xl font-semibold">
+          <div className="flex h-16 items-center justify-between border-b px-6">
+            <h1 className="text-xl font-bold">
               IVIVE
             </h1>
 
@@ -63,25 +114,33 @@ export default function Header() {
 
           {/* Menu */}
           <nav className="flex flex-1 flex-col items-center justify-center gap-10 text-3xl font-medium">
-            <a href="#" onClick={() => setMenuOpen(false)}>
-              서비스
-            </a>
 
-            <a href="#" onClick={() => setMenuOpen(false)}>
-              사례
-            </a>
+            {menus.map((menu) => (
+              <Link
+                key={menu.name}
+                href={menu.href}
+                onClick={() => setMenuOpen(false)}
+              >
+                {menu.name}
+              </Link>
+            ))}
 
-            <a href="#" onClick={() => setMenuOpen(false)}>
-              컨설팅
-            </a>
+            <Link
+              href="/consult"
+              onClick={() => setMenuOpen(false)}
+              className="
+                mt-6
+                rounded-full
+                bg-black
+                px-8
+                py-3
+                text-lg
+                text-white
+              "
+            >
+              무료 상담
+            </Link>
 
-            <a href="#" onClick={() => setMenuOpen(false)}>
-              고객센터
-            </a>
-
-            <a href="#" onClick={() => setMenuOpen(false)}>
-              회사소개
-            </a>
           </nav>
         </div>
       </div>

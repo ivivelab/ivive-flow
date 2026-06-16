@@ -3,7 +3,7 @@ export default function Hero() {
     <section className="relative h-screen overflow-hidden">
       {/* Hero Image */}
       <img
-        src="/images/index/hero.webp"
+        src="/images/index/d-hero.webp"
         alt="IVIVE Hero"
         className="absolute inset-0 h-full w-full object-cover"
       />

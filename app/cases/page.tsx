@@ -36,19 +36,18 @@ export default function ServicesPage() {
 
   return (
     <main>
-
       {/* Hero */}
       <section className="relative overflow-hidden bg-black text-white">
         <div className="absolute left-1/2 top-20 h-[400px] w-[400px] -translate-x-1/2 rounded-full bg-blue-600/20 blur-[140px]" />
 
-        <div className="relative mx-auto flex min-h-[70vh] max-w-6xl items-center justify-center px-6 text-center">
+        <div className="relative mx-auto flex min-h-[50vh] max-w-6xl items-center justify-center px-6 text-center">
           <div>
             <span className="rounded-full border border-white/20 px-4 py-2 text-sm text-zinc-300">
               Cases
             </span>
 
             <h1 className="mt-8 text-5xl font-bold md:text-7xl">
-              운영을 단순하게
+              구축 사례
             </h1>
 
             <p className="mx-auto mt-8 max-w-2xl text-lg text-zinc-400 md:text-xl">
@@ -59,7 +58,6 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-
 
 {/* Case Studies */}
 <section className="mx-auto max-w-7xl px-6 py-32">
