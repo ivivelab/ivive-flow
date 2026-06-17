@@ -7,7 +7,7 @@ import {
 
 export default function FinanceWidget() {
   return (
-    <div className="bg-white border rounded-2xl p-6">
+    <div className="bg-white border border-zinc-200 rounded-2xl p-6">
 
       <div className="flex items-center gap-3 mb-6">
 
@@ -135,6 +135,7 @@ export default function FinanceWidget() {
         rounded-xl
         bg-slate-50
         border
+        border-zinc-200
       ">
 
         <p className="text-sm text-slate-500">

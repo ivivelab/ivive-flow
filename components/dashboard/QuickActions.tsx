@@ -26,7 +26,7 @@ const actions = [
 
 export default function QuickActions() {
   return (
-    <div className="bg-white border rounded-2xl p-6">
+    <div className="bg-white border border-zinc-200 rounded-2xl p-6">
 
       <h2 className="text-xl font-bold mb-6">
         빠른 실행
@@ -43,6 +43,7 @@ export default function QuickActions() {
               className="
                 p-5
                 border
+                border-zinc-200
                 rounded-xl
                 hover:bg-slate-50
                 hover:border-indigo-300

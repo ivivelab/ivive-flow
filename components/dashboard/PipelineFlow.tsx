@@ -1,10 +1,11 @@
 import {
   MessageCircle,
-  Phone,
   FileText,
+  CalendarDays,
   Handshake,
+  CreditCard,
   Play,
-  Check,
+  CheckCircle2,
 } from "lucide-react";
 
 const flowData = [
@@ -16,17 +17,17 @@ const flowData = [
     growth: "+12%",
   },
   {
-    title: "상담",
+    title: "견적",
     count: 12,
     color: "bg-green-500",
-    icon: Phone,
+    icon: FileText,
     growth: "+8%",
   },
   {
-    title: "견적",
+    title: "예약",
     count: 8,
     color: "bg-orange-500",
-    icon: FileText,
+    icon: CalendarDays,
     growth: "+5%",
   },
   {
@@ -37,17 +38,24 @@ const flowData = [
     growth: "+2%",
   },
   {
-    title: "실행",
+    title: "결제",
     count: 3,
+    color: "bg-emerald-500",
+    icon: CreditCard,
+    growth: "+1%",
+  },
+  {
+    title: "진행",
+    count: 2,
     color: "bg-blue-500",
     icon: Play,
     growth: "+0%",
   },
   {
     title: "완료",
-    count: 2,
+    count: 1,
     color: "bg-indigo-500",
-    icon: Check,
+    icon: CheckCircle2,
     growth: "+0%",
   },
 ];
@@ -61,28 +69,7 @@ export default function PipelineFlow() {
   );
 
   return (
-    <div className="bg-white border rounded-2xl p-6">
-
-      <div className="flex items-center justify-between mb-8">
-
-        <h2 className="text-2xl font-bold">
-          비즈니스 흐름
-        </h2>
-
-        <select
-          className="
-            border
-            rounded-lg
-            px-3
-            py-2
-            text-sm
-          "
-        >
-          <option>이번 달</option>
-          <option>지난 달</option>
-        </select>
-
-      </div>
+    <div className="bg-white border border-zinc-200 rounded-2xl p-6">
 
       <div className="flex items-center justify-between">
 
@@ -142,38 +129,7 @@ export default function PipelineFlow() {
           );
         })}
       </div>
-
-      <div className="mt-10">
-
-        <div className="flex justify-between mb-2">
-
-          <span className="text-sm text-slate-500">
-            전환율
-          </span>
-
-          <span className="font-semibold">
-            {conversionRate}%
-          </span>
-
-        </div>
-
-        <div className="w-full h-3 bg-slate-200 rounded-full overflow-hidden">
-
-          <div
-            className="
-              h-full
-              bg-indigo-600
-              rounded-full
-            "
-            style={{
-              width: `${conversionRate}%`,
-            }}
-          />
-
-        </div>
-
-      </div>
-
+      
     </div>
   );
 }

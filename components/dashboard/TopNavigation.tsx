@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import {
-  Home,
   Users,
   MessageCircle,
   FileText,
@@ -20,11 +19,6 @@ export default function TopNavigation() {
   const pathname = usePathname();
 
   const menus = [
-    {
-      name: "대시보드",
-      href: "/dashboard",
-      icon: Home,
-    },
     {
       name: "문의",
       href: "/inquiry",
@@ -49,7 +43,7 @@ export default function TopNavigation() {
       name: "결제",
       href: "/payment",
       icon: CreditCard,
-    },   
+    },
     {
       name: "진행",
       href: "/progress",
@@ -68,34 +62,26 @@ export default function TopNavigation() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b">
-
-      <div className="h-20 px-8 flex items-center justify-between">
+    <header className="sticky top-0 z-50 bg-[#f4f4f5] border-b border-slate-200">
+      <div className="h-20 px-4 md:px-8 flex items-center">
 
         {/* 로고 */}
-
-        <div className="flex items-center gap-10">
-
+        <div className="flex-shrink-0">
           <Link
             href="/dashboard"
-            className="flex items-center gap-3"
+            className="font-bold text-xl text-slate-900"
           >
-            <div className="w-10 h-10 rounded-xl bg-indigo-600" />
-
-            <span className="font-bold text-lg">
-              IVIVE
-            </span>
+            IVIVE
           </Link>
+        </div>
 
-          {/* 메뉴 */}
-
-          <nav className="flex items-center gap-8">
-
+        {/* 메뉴 */}
+        <nav className="flex-1 flex justify-center">
+          <div className="flex items-center gap-2 md:gap-4 lg:gap-8">
             {menus.map((menu) => {
               const Icon = menu.icon;
 
-              const isActive =
-                pathname === menu.href;
+              const isActive = pathname === menu.href;
 
               return (
                 <Link
@@ -105,33 +91,36 @@ export default function TopNavigation() {
                     flex
                     items-center
                     gap-2
-                    transition
+                    px-2
+                    py-2
+                    rounded-lg
+                    transition-all
+                    duration-200
+                    hover:bg-white
                     hover:text-indigo-600
 
                     ${
                       isActive
-                        ? "text-indigo-600 font-semibold"
+                        ? "text-indigo-600 font-semibold bg-white"
                         : "text-slate-600"
                     }
                   `}
                 >
                   <Icon size={18} />
 
-                  {menu.name}
+                  <span className="hidden lg:inline">
+                    {menu.name}
+                  </span>
                 </Link>
               );
             })}
+          </div>
+        </nav>
 
-          </nav>
-
-        </div>
-
-        {/* 오른쪽 */}
-
-        <div className="flex items-center gap-6">
+        {/* 우측 영역 */}
+        <div className="flex-shrink-0 flex items-center gap-4 md:gap-6">
 
           <button className="relative">
-
             <Bell size={22} />
 
             <div
@@ -152,7 +141,6 @@ export default function TopNavigation() {
             >
               3
             </div>
-
           </button>
 
           <img
@@ -164,7 +152,6 @@ export default function TopNavigation() {
         </div>
 
       </div>
-
     </header>
   );
 }

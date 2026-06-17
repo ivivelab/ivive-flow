@@ -9,7 +9,7 @@ export default function WelcomeSection() {
   });
 
   return (
-    <div className="bg-white border rounded-2xl p-8">
+    <div className="bg-white border border-zinc-200 rounded-2xl p-8">
 
       <div className="flex justify-between items-start">
 

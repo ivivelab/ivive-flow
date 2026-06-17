@@ -36,23 +36,71 @@ export default function InquiryPage() {
   return (
     <div className="w-[90%] mx-auto py-6 space-y-6">
 
-      {/* 제목 */}
+      <div className="p-6 border-b border-zinc-200">
 
-      <div>
-        <h1 className="text-3xl font-bold">
-          상담분석
-        </h1>
+        <div className="flex items-center justify-between">
 
-        <p className="text-slate-500 mt-2">
-          AI 상담 성과와 전환율을 확인합니다.
-        </p>
+          <h2 className="text-xl font-bold">
+            최근 상담
+          </h2>
+
+          <div className="flex items-center gap-2">
+
+            <button
+              className="
+                px-3 py-1.5
+                rounded-lg
+                bg-indigo-600
+                text-white
+                text-sm
+              "
+            >
+              오늘
+            </button>
+
+            <button
+              className="
+                px-3 py-1.5
+                rounded-lg
+                border
+                text-sm
+              "
+            >
+              7일
+            </button>
+
+            <button
+              className="
+                px-3 py-1.5
+                rounded-lg
+                border
+                text-sm
+              "
+            >
+              30일
+            </button>
+
+            <button
+              className="
+                px-3 py-1.5
+                rounded-lg
+                border
+                text-sm
+              "
+            >
+              전체
+            </button>
+
+          </div>
+
+        </div>
+
       </div>
-
       {/* KPI */}
 
       <div className="grid md:grid-cols-4 gap-4">
 
-        <div className="bg-white border rounded-2xl p-5">
+        <div className="bg-white border border-zinc-200 rounded-2xl p-5">
           <MessageCircle className="mb-3" />
           <p className="text-sm text-slate-500">
             전체 상담
@@ -62,7 +110,7 @@ export default function InquiryPage() {
           </h2>
         </div>
 
-        <div className="bg-white border rounded-2xl p-5">
+        <div className="bg-white border border-zinc-200 rounded-2xl p-5">
           <Bot className="mb-3" />
           <p className="text-sm text-slate-500">
             AI 해결
@@ -72,7 +120,7 @@ export default function InquiryPage() {
           </h2>
         </div>
 
-        <div className="bg-white border rounded-2xl p-5">
+        <div className="bg-white border border-zinc-200 rounded-2xl p-5">
           <UserRound className="mb-3" />
           <p className="text-sm text-slate-500">
             사람 연결
@@ -82,7 +130,7 @@ export default function InquiryPage() {
           </h2>
         </div>
 
-        <div className="bg-white border rounded-2xl p-5">
+        <div className="bg-white border border-zinc-200 rounded-2xl p-5">
           <CalendarCheck className="mb-3" />
           <p className="text-sm text-slate-500">
             예약 전환
@@ -98,7 +146,7 @@ export default function InquiryPage() {
 
       <div className="grid lg:grid-cols-3 gap-4">
 
-        <div className="bg-white border rounded-2xl p-6">
+        <div className="bg-white border border-zinc-200 rounded-2xl p-6">
 
           <h3 className="font-bold text-lg">
             AI 처리율
@@ -114,7 +162,7 @@ export default function InquiryPage() {
 
         </div>
 
-        <div className="bg-white border rounded-2xl p-6">
+        <div className="bg-white border border-zinc-200 rounded-2xl p-6">
 
           <h3 className="font-bold text-lg">
             절감된 상담
@@ -130,7 +178,7 @@ export default function InquiryPage() {
 
         </div>
 
-        <div className="bg-white border rounded-2xl p-6">
+        <div className="bg-white border border-zinc-200 rounded-2xl p-6">
 
           <h3 className="font-bold text-lg">
             예약 전환율
@@ -150,9 +198,9 @@ export default function InquiryPage() {
 
       {/* 최근 상담 */}
 
-      <div className="bg-white border rounded-2xl">
+      <div className="bg-white border border-zinc-200 rounded-2xl">
 
-        <div className="p-6 border-b">
+        <div className="p-6 border-b border-zinc-200">
 
           <h2 className="text-xl font-bold">
             최근 상담
@@ -169,6 +217,7 @@ export default function InquiryPage() {
               className="
                 px-6 py-4
                 border-b
+                border-zinc-200
                 flex
                 justify-between
                 items-center

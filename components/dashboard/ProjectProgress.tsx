@@ -1,102 +1,187 @@
+"use client";
+
 import {
-  FolderKanban,
+  MessageCircle,
+  FileText,
+  CalendarCheck,
+  Handshake,
+  Wallet,
 } from "lucide-react";
 
-const projects = [
+const stats = [
   {
-    name: "홈페이지 제작",
-    progress: 70,
+    title: "신규 문의",
+    value: "12건",
+    sub: "오늘 접수",
+    change: "+3",
+    icon: MessageCircle,
+    iconBg: "bg-violet-100",
+    iconColor: "text-violet-600",
   },
+
   {
-    name: "에어컨 설치",
-    progress: 85,
+    title: "견적 발송",
+    value: "8건",
+    sub: "대기 2건",
+    change: "+1",
+    icon: FileText,
+    iconBg: "bg-green-100",
+    iconColor: "text-green-600",
   },
+
   {
-    name: "사무실 청소",
-    progress: 50,
+    title: "예약 확정",
+    value: "6건",
+    sub: "내일 방문 예정",
+    change: "+2",
+    icon: CalendarCheck,
+    iconBg: "bg-blue-100",
+    iconColor: "text-blue-600",
   },
+
   {
-    name: "인테리어 공사",
-    progress: 30,
+    title: "계약 진행",
+    value: "4건",
+    sub: "검토 단계",
+    change: "+1",
+    icon: Handshake,
+    iconBg: "bg-amber-100",
+    iconColor: "text-amber-600",
+  },
+
+  {
+    title: "매출 (오늘)",
+    value: "2,480,000원",
+    sub: "전일 대비 증가",
+    change: "+320,000",
+    icon: Wallet,
+    iconBg: "bg-orange-100",
+    iconColor: "text-orange-600",
   },
 ];
 
 export default function ProjectProgress() {
   return (
-    <div className="bg-white border rounded-2xl p-6">
-
-      <div className="flex items-center gap-3 mb-6">
-
-        <div
-          className="
-            w-12 h-12
-            rounded-xl
-            bg-indigo-100
-            flex items-center justify-center
-          "
-        >
-          <FolderKanban
-            size={24}
-            className="text-indigo-600"
-          />
-        </div>
-
+    <div
+      className="
+        bg-white
+        border
+        border-zinc-200
+        rounded-3xl
+        p-6
+      "
+    >
+      {/* Header */}
+      <div className="flex items-center justify-between mb-6">
         <div>
-
-          <h2 className="font-bold text-xl">
+          <h2 className="text-2xl font-bold">
             진행 현황
           </h2>
 
-          <p className="text-sm text-slate-500">
-            현재 진행 중인 프로젝트
+          <p className="text-slate-500 mt-1">
+            우리 매장의 실시간 현황
           </p>
-
         </div>
 
+        <button
+          className="
+            text-sm
+            font-medium
+            text-slate-600
+            hover:text-slate-900
+          "
+        >
+          전체 보기 →
+        </button>
       </div>
 
-      <div className="space-y-5">
+      {/* KPI Cards */}
+      <div className="space-y-4">
+        {stats.map((item) => {
+          const Icon = item.icon;
 
-        {projects.map((project) => (
-          <div key={project.name}>
+          return (
+            <div
+              key={item.title}
+              className="
+                border
+                border-zinc-200
+                rounded-2xl
+                p-4
+                hover:bg-slate-50
+                transition
+              "
+            >
+              <div className="flex items-center gap-4">
 
-            <div className="flex justify-between mb-2">
+                <div
+                  className={`
+                    w-14
+                    h-14
+                    rounded-2xl
+                    flex
+                    items-center
+                    justify-center
+                    ${item.iconBg}
+                  `}
+                >
+                  <Icon
+                    size={24}
+                    className={item.iconColor}
+                  />
+                </div>
 
-              <span className="font-medium">
-                {project.name}
-              </span>
+                <div className="flex-1">
 
-              <span className="text-sm text-slate-500">
-                {project.progress}%
-              </span>
+                  <div className="flex items-center justify-between">
 
+                    <p className="font-semibold text-slate-700">
+                      {item.title}
+                    </p>
+
+                    <span
+                      className="
+                        text-sm
+                        font-semibold
+                        text-green-600
+                        bg-green-50
+                        px-2
+                        py-1
+                        rounded-lg
+                      "
+                    >
+                      ▲ {item.change}
+                    </span>
+
+                  </div>
+
+                  <h3
+                    className="
+                      text-3xl
+                      font-bold
+                      mt-1
+                    "
+                  >
+                    {item.value}
+                  </h3>
+
+                  <p
+                    className="
+                      text-sm
+                      text-slate-500
+                      mt-1
+                    "
+                  >
+                    {item.sub}
+                  </p>
+
+                </div>
+
+              </div>
             </div>
-
-            <div className="
-              h-3
-              bg-slate-200
-              rounded-full
-              overflow-hidden
-            ">
-
-              <div
-                className="
-                  h-full
-                  bg-indigo-600
-                  rounded-full
-                "
-                style={{
-                  width: `${project.progress}%`,
-                }}
-              />
-
-            </div>
-
-          </div>
-        ))}
-
+          );
+        })}
       </div>
-
     </div>
   );
 }

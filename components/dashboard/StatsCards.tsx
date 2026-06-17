@@ -41,7 +41,7 @@ const cards = [
     color: "bg-red-100 text-red-600",
   },
   {
-    title: "이번 달 매출",
+    title: "이번 달 결재",
     value: "14,500,000원",
     icon: Briefcase,
     color: "bg-purple-100 text-purple-600",
@@ -63,6 +63,7 @@ export default function StatsCards() {
               bg-white
               rounded-2xl
               border
+              border-zinc-200
               p-5
               hover:shadow-md
               transition
@@ -122,8 +123,6 @@ export default function StatsCards() {
                 font-medium
               "
             >
-              바로가기
-              <ArrowRight size={14} />
             </button>
 
           </div>
