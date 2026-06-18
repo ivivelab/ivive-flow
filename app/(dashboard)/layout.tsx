@@ -10,8 +10,8 @@ export default function DashboardLayout({
     <>
       <TopNavigation />
 
-      <main className="min-h-screen bg-white">
-        {children}
+      <main className="bg-white">
+      {children}
       </main>
 
       <Footer />

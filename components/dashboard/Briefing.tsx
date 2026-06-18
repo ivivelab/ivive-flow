@@ -1,76 +1,41 @@
-import {
-  Brain,
-  TrendingUp,
-  AlertCircle,
-  CheckCircle,
-} from "lucide-react";
+"use client";
 
-export default function AIBriefing() {
+import { Brain, TrendingUp, AlertCircle, CheckCircle } from "lucide-react";
+
+const briefings = [
+  { icon: AlertCircle, color: "text-orange-600", bg: "bg-orange-50", text: "미응답 문의", count: "4건" },
+  { icon: TrendingUp, color: "text-emerald-600", bg: "bg-emerald-50", text: "문의 증가율", count: "12%" },
+  { icon: CheckCircle, color: "text-blue-600", bg: "bg-blue-50", text: "잠재 계약 고객", count: "3명" },
+  { icon: Brain, color: "text-indigo-600", bg: "bg-indigo-50", text: "AI 처리 효율", count: "68%" },
+];
+
+export default function Briefing() {
   return (
-    <div className="bg-white border border-zinc-200 rounded-2xl p-6 h-full">
-
+    <div className="bg-white border border-zinc-200 rounded-2xl p-6 h-full shadow-sm">
+      {/* 헤더 부분 통일: 다른 위젯과 동일한 구조 */}
+      <div className="flex items-start justify-between mb-8">
+        <div>
+          <h2 className="text-lg font-black text-zinc-900">인사이트 요약</h2>
+          <p className="text-xs font-bold text-zinc-400 mt-1">데이터 분석 결과</p>
+        </div>
+        {/* 필요시 인사이트도 전체 보기 버튼을 추가 가능합니다 */}
+      </div>
+      
       <div className="space-y-4">
-
-        <div className="flex items-start gap-3">
-          <AlertCircle
-            size={18}
-            className="text-orange-500 mt-1 shrink-0"
-          />
-
-          <p className="text-sm text-slate-700">
-            미응답 문의가
-            <span className="font-semibold text-orange-600">
-              {" "}4건
-            </span>
-            있습니다.
-          </p>
-        </div>
-
-        <div className="flex items-start gap-3">
-          <TrendingUp
-            size={18}
-            className="text-green-500 mt-1 shrink-0"
-          />
-
-          <p className="text-sm text-slate-700">
-            이번 달 문의가
-            <span className="font-semibold text-green-600">
-              {" "}12%
-            </span>
-            증가했습니다.
-          </p>
-        </div>
-
-        <div className="flex items-start gap-3">
-          <CheckCircle
-            size={18}
-            className="text-blue-500 mt-1 shrink-0"
-          />
-
-          <p className="text-sm text-slate-700">
-            계약 가능성이 높은 고객
-            <span className="font-semibold text-blue-600">
-              {" "}3명
-            </span>
-            이 있습니다.
-          </p>
-        </div>
-
-        <div className="flex items-start gap-3">
-          <Brain
-            size={18}
-            className="text-indigo-500 mt-1 shrink-0"
-          />
-
-          <p className="text-sm text-slate-700">
-            AI 처리율이
-            <span className="font-semibold text-indigo-600">
-              {" "}68%
-            </span>
-            로 유지되고 있습니다.
-          </p>
-        </div>
-
+        {briefings.map((item, idx) => {
+          const Icon = item.icon;
+          return (
+            <div key={idx} className="flex items-center gap-4 p-3 rounded-xl border border-zinc-100 hover:border-zinc-200 transition-colors">
+              <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${item.bg} ${item.color}`}>
+                <Icon size={16} />
+              </div>
+              <div className="flex justify-between items-center w-full">
+                <p className="text-xs font-bold text-zinc-500">{item.text}</p>
+                <p className={`text-sm font-black ${item.color}`}>{item.count}</p>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

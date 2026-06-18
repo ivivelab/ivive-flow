@@ -1,224 +1,74 @@
 "use client";
 
-import {
-  CheckCircle2,
-  Clock,
-  Eye,
-  ArrowRight,
-} from "lucide-react";
+import { useState } from "react";
 
-const projects = [
-  {
-    id: 1,
-    customer: "김철수",
-    service: "에어컨 설치",
-    progress: 70,
-    task: "실외기 설치",
-  },
-  {
-    id: 2,
-    customer: "박영희",
-    service: "사무실 청소",
-    progress: 40,
-    task: "바닥 청소 진행중",
-  },
-  {
-    id: 3,
-    customer: "이민수",
-    service: "인테리어 공사",
-    progress: 85,
-    task: "마감 작업",
-  },
+// 초기 데이터 구조
+const initialTasks = [
+  { id: 1, title: "서울시청 웹사이트 제작", status: "수정요청반영중" },
+  { id: 2, title: "강남 아파트 인테리어", status: "진행중" },
 ];
 
-const todayTasks = [
-  "김철수 고객 방문",
-  "에어컨 자재 주문",
-  "작업 완료 사진 업로드",
-  "잔금 요청 문자 발송",
-];
+export default function ProgressManagementPage() {
+  const [tasks, setTasks] = useState(initialTasks);
 
-export default function ProgressPage() {
+  // 상태 업데이트 핸들러
+  const updateStatus = (id: number, newStatus: string) => {
+    setTasks(tasks.map(t => (t.id === id ? { ...t, status: newStatus } : t)));
+  };
+
+  // 제목 업데이트 핸들러
+  const updateTitle = (id: number, newTitle: string) => {
+    setTasks(tasks.map(t => (t.id === id ? { ...t, title: newTitle } : t)));
+  };
+
   return (
-    <div className="w-[90%] mx-auto py-6 space-y-6">
-
-      {/* 헤더 */}
-
-      <div>
-
-        <h1 className="text-3xl font-bold">
-          진행
-        </h1>
-
-        <p className="text-slate-500 mt-2">
-          현재 진행중인 업무를 관리합니다.
+    <div className="w-full lg:w-[96%] mx-auto px-6 py-10">
+      {/* 제목 및 설명 영역 */}
+      <div className="mb-8">
+        <h1 className="text-2xl font-black text-zinc-950">진행 관리</h1>
+        <p className="text-zinc-400 mt-2 text-xs sm:text-sm font-medium">
+          진행 중인 프로젝트의 상태를 한눈에 관리합니다.
         </p>
-
       </div>
 
-      {/* 오늘 해야 할 일 */}
-
-      <div className="bg-white border rounded-2xl p-6">
-
-        <div className="flex items-center gap-3 mb-6">
-
-          <Clock
-            size={22}
-            className="text-indigo-600"
-          />
-
-          <h2 className="text-xl font-bold">
-            오늘 해야 할 일
-          </h2>
-
-        </div>
-
-        <div className="space-y-4">
-
-          {todayTasks.map((task) => (
-            <div
-              key={task}
-              className="
-                flex
-                items-center
-                gap-3
-                p-3
-                rounded-xl
-                bg-slate-50
-              "
-            >
-              <input
-                type="checkbox"
-                className="w-5 h-5"
-              />
-
-              <span>{task}</span>
-
-            </div>
-          ))}
-
-        </div>
-
-      </div>
-
-      {/* 진행중 프로젝트 */}
-
+      {/* 프로젝트 리스트 */}
       <div className="space-y-4">
-
-        {projects.map((item) => (
-
-          <div
-            key={item.id}
-            className="
-              bg-white
-              border
-              rounded-2xl
-              p-6
-            "
+        {tasks.map((task) => (
+          <div 
+            key={task.id} 
+            className="bg-white p-5 border border-zinc-200 rounded-xl flex items-center justify-between shadow-sm"
           >
-
-            <div className="flex justify-between">
-
-              <div>
-
-                <h3 className="text-xl font-bold">
-                  {item.customer}
-                </h3>
-
-                <p className="text-slate-500 mt-1">
-                  {item.service}
-                </p>
-
-                <p className="mt-3 text-sm text-slate-600">
-                  현재 작업 :
-                  <span className="font-medium ml-1">
-                    {item.task}
-                  </span>
-                </p>
-
-              </div>
-
-              <div className="text-right">
-
-                <p className="text-sm text-slate-500">
-                  진행률
-                </p>
-
-                <p className="text-2xl font-bold text-indigo-600">
-                  {item.progress}%
-                </p>
-
-              </div>
-
-            </div>
-
-            {/* Progress Bar */}
-
-            <div className="mt-4">
-
-              <div className="h-3 bg-slate-200 rounded-full overflow-hidden">
-
-                <div
-                  className="h-full bg-indigo-600"
-                  style={{
-                    width: `${item.progress}%`,
-                  }}
-                />
-
-              </div>
-
-            </div>
-
-            {/* 버튼 */}
-
-            <div className="flex gap-3 mt-5">
-
-              <button
-                className="
-                  flex items-center gap-2
-                  px-4 py-2
-                  rounded-lg
-                  bg-green-50
-                  text-green-600
-                "
+            {/* 제목 수정 가능하도록 input 적용 */}
+            <input
+              type="text"
+              value={task.title}
+              onChange={(e) => updateTitle(task.id, e.target.value)}
+              className="font-bold text-lg text-zinc-800 w-full max-w-[50%] focus:outline-none focus:border-b-2 focus:border-indigo-500"
+            />
+            
+            <div className="flex items-center gap-3">
+              {/* 상태 셀렉트박스 */}
+              <select 
+                value={task.status}
+                onChange={(e) => updateStatus(task.id, e.target.value)}
+                className="bg-indigo-50 text-indigo-700 px-3 py-1.5 rounded-lg text-sm font-bold border-none cursor-pointer hover:bg-indigo-100 transition"
               >
-                <CheckCircle2 size={16} />
-                완료 처리
-              </button>
+                <option value="진행중">진행중</option>
+                <option value="수정요청반영중">수정요청반영중</option>
+                <option value="검수대기">검수대기</option>
+              </select>
 
-              <button
-                className="
-                  flex items-center gap-2
-                  px-4 py-2
-                  rounded-lg
-                  bg-slate-100
-                "
+              {/* 완료 버튼 */}
+              <button 
+                className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-1.5 rounded-lg text-sm font-bold transition shadow-sm"
+                onClick={() => console.log(`${task.title} 완료 처리`)}
               >
-                <Eye size={16} />
-                상세보기
+                완료
               </button>
-
-              <button
-                className="
-                  flex items-center gap-2
-                  px-4 py-2
-                  rounded-lg
-                  bg-indigo-50
-                  text-indigo-600
-                "
-              >
-                <ArrowRight size={16} />
-                다음 단계
-              </button>
-
             </div>
-
           </div>
-
         ))}
-
       </div>
-
     </div>
   );
 }
