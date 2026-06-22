@@ -10,7 +10,7 @@ export default function DashboardLayout({
     <>
       <TopNavigation />
 
-      <main className="bg-white">
+      <main className="bg-[#f8f7fa]">
       {children}
       </main>
 

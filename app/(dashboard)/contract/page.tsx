@@ -1,139 +1,141 @@
 "use client";
+import { useState } from "react";
+import { Search, Plus, SlidersHorizontal, Bot, UserRound, CalendarCheck, Clock3, ChevronLeft, ChevronRight, Calendar } from "lucide-react";
 
-import { useState, useEffect } from "react";
-import {
-  Plus,
-  Calendar,
-  FileText,
-  Briefcase,
-  Eye,
-  ArrowRight
-} from "lucide-react";
-
-// 데이터 구조 (에이전시, 인테리어 등 B2B 대형 프로젝트 전용 데이터)
-const contractList = [
-  { id: 1, customer: "김철수", service: "에어컨 설치", price: "₩1,500,000", date: "2026-06-18", status: "계약완료", statusColor: "bg-emerald-50 text-emerald-600 border-emerald-200" },
-  { id: 2, customer: "박영희", service: "사무실 청소", price: "₩850,000", date: "2026-06-19", status: "진행대기", statusColor: "bg-amber-50 text-amber-600 border-amber-200" },
-  { id: 3, customer: "이민수", service: "인테리어 공사", price: "₩12,000,000", date: "2026-06-20", status: "진행중", statusColor: "bg-indigo-50 text-[#6c60e1] border-indigo-100" },
+const inquiryData = [
+  { id: 1, name: "홍길동", category: "예약 자동화", content: "병원 예약 연동이랑 카카오 알림톡 자동화 시스템 견적 받아볼 수 있을까요?", price: "₩1,200,000", time: "2026.06.18 10:24" },
+  { id: 2, name: "이영희", category: "홈페이지 제작", content: "중소기업 소개용 5페이지 내외 반응형 웹사이트 구축 비용과 기간 문의합니다.", price: "₩2,500,000", time: "2026.06.18 09:50" },
+  { id: 3, name: "김철수", category: "랜딩페이지", content: "신규 분양 광고 집행용 단방향 랜딩페이지 제작 급하게 가능한지 확인 부탁드립니다.", price: "₩600,000", time: "2026.06.18 08:15" },
+  { id: 4, name: "박민수", category: "예약 자동화", content: "필라테스 스튜디오 회원권 마감 및 자동 예약 대기 시스템 구축 견적 요청합니다.", price: "확인 대기", time: "2026.06.17 18:30" },
+  { id: 5, name: "최수지", category: "홈페이지 제작", content: "쇼핑몰 결제 기능이 포함된 워드프레스 기반 자사몰 제작 단가가 어떻게 되나요?", price: "₩3,800,000", time: "2026.06.17 16:42" },
 ];
 
-export default function FinalContractPage() {
-  // ⚡ 실제 유저 상태 혹은 DB 세팅값 정보 (기본값: 에이전시 모드 활성화)
-  // 나중에 Supabase 회원 정보 테이블과 연동하여 자동으로 true/false가 주입됩니다.
-  const [isAgencyMode, setIsAgencyMode] = useState(true); 
+export default function SimpleDayReservationPage() {
+  const [selectedDate, setSelectedDate] = useState("2026-06-18");
 
-  // 로컬 숍(미용실, 네일숍) 사장님이 주소창에 직접 /contract를 치고 들어오는 예외 케이스 차단
-  if (!isAgencyMode) {
-    return (
-      <div className="w-full text-center py-24">
-        <Briefcase size={44} className="mx-auto text-zinc-300 mb-3" />
-        <h3 className="text-zinc-700 font-bold text-base">접근할 수 없는 메뉴입니다.</h3>
-        <p className="text-zinc-400 text-xs mt-1">현재 사용 중인 솔루션(로컬 뷰티숍 모드)에서는 제공되지 않는 기능입니다.</p>
-      </div>
-    );
-  }
+  // 오류 해결: 함수 정의 추가
+  const handleCreateQuote = () => {
+    console.log("견적 생성 버튼 클릭됨");
+  };
+
 
   return (
-    <div className="w-full lg:w-[96%] mx-auto px-4 sm:px-6 pt-8 pb-12 flex flex-col gap-6">
 
-      {/* 1. 헤더 영역 */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+    <div className="w-full lg:w-[98%] mx-auto px-4 sm:px-6 py-8 space-y-6">
+      
+      {/* 헤더 및 컨트롤 영역 */}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-2">
         <div>
-          <h1 className="text-2xl font-extrabold text-zinc-950 tracking-tight">계약</h1>
-          <p className="text-zinc-400 mt-1 text-xs sm:text-sm font-medium">계약 내역을 안전하고 투명하게 관리합니다.</p>
+          <h2 className="text-2xl font-bold text-zinc-950 tracking-tight">계약 관리</h2>
+          <p className="text-zinc-400 mt-1.5 text-sm font-medium">계약 내역을 안전하고 투명하게 관리합니다.</p>
         </div>
 
-        <button className="flex items-center gap-1.5 px-4 py-2 bg-[#6c60e1] hover:bg-[#564bc4] text-white text-sm font-bold rounded-xl shadow-sm shrink-0 transition">
-          <Plus size={16} />
-          <span>계약 등록</span>
-        </button>
+        <div className="flex items-center gap-2 w-full sm:w-auto">
+          <div className="relative flex-1 sm:w-60">
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" />
+            <input type="text" placeholder="고객명, 내용 검색..." className="w-full pl-9 pr-4 py-2 bg-zinc-50 border border-zinc-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#6c60e1]/20" />
+          </div>
+          <button className="p-2 border border-zinc-200 rounded-xl bg-white hover:bg-zinc-50 transition"><SlidersHorizontal size={18} /></button>
+          <button className="flex items-center gap-1.5 px-4 py-2 bg-[#6c60e1] hover:bg-[#564bc4] text-white text-sm font-bold rounded-xl transition">
+            <Plus size={16} /> <span>계약 생성</span>
+          </button>
+        </div>
       </div>
-
-      {/* 2. 대시보드 요약 스탯 카드 블록 (기존 디자인 핏 100% 매핑) */}
+      
+      {/* KPI 카드 */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="bg-white border border-zinc-200 rounded-2xl p-5 shadow-sm">
-          <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">전체 계약</p>
-          <h2 className="text-2xl sm:text-3xl font-black text-zinc-900 mt-1.5">32</h2>
-        </div>
-        <div className="bg-white border border-zinc-200 rounded-2xl p-5 shadow-sm">
-          <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">진행 대기</p>
-          <h2 className="text-2xl sm:text-3xl font-black text-zinc-900 mt-1.5">5</h2>
-        </div>
-        <div className="bg-white border border-zinc-200 rounded-2xl p-5 shadow-sm">
-          <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">진행중</p>
-          <h2 className="text-2xl sm:text-3xl font-black text-[#6c60e1] mt-1.5">11</h2>
-        </div>
-        <div className="bg-white border border-zinc-200 rounded-2xl p-5 shadow-sm">
-          <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">계약금액</p>
-          <h2 className="text-2xl sm:text-3xl font-black text-zinc-950 mt-1.5">4.2억</h2>
-        </div>
-      </div>
-
-      {/* 3. 검색 영역 */}
-      <div className="relative">
-        <input
-          type="text"
-          placeholder="고객명 또는 계약 서비스 항목 검색..."
-          className="w-full pl-4 pr-4 py-3 bg-white border border-zinc-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#6c60e1]/20 focus:border-[#6c60e1] transition shadow-sm"
-        />
-      </div>
-
-      {/* 4. 계약 내역 리스트 리포트 */}
-      <div className="space-y-4">
-        {contractList.map((item) => (
-          <div
-            key={item.id}
-            className="bg-white border border-zinc-200 rounded-2xl p-5 hover:border-zinc-300 shadow-sm transition-all duration-150 flex flex-col md:flex-row md:items-center justify-between gap-4"
-          >
-            {/* 프로필 섹션 */}
-            <div className="flex flex-col sm:flex-row sm:items-start gap-4 flex-1">
-              <div className="space-y-1.5 flex-1">
-                <div>
-                  <span className="text-base font-black text-zinc-900">{item.customer}</span>
-                  <p className="text-xs text-zinc-400 font-medium mt-0.5">{item.service}</p>
-                </div>
-
-                {/* 메인 총 계약 대금 단가 */}
-                <div className="text-lg font-black text-[#6c60e1] tracking-tight pt-1">
-                  {item.price}
-                </div>
-
-                {/* 날짜 인디케이터 */}
-                <div className="flex items-center gap-1.5 text-xs text-zinc-400 font-bold pt-0.5">
-                  <Calendar size={13} />
-                  <span>계약일 : {item.date}</span>
-                </div>
-              </div>
+        {[
+          { title: "전체", value: "12", icon: UserRound, color: "text-orange-600", bgColor: "bg-orange-50" },
+          { title: "AI", value: "9", icon: Bot, color: "text-blue-600", bgColor: "bg-blue-50" },
+          { title: "직접", value: "3", icon: CalendarCheck, color: "text-emerald-600", bgColor: "bg-emerald-50" },
+          { title: "대기", value: "6", icon: Clock3, color: "text-rose-600", bgColor: "bg-rose-50" },
+        ].map((item) => (
+          <div key={item.title} className="bg-white rounded-xl p-6 shadow-sm border border-zinc-100">
+            <div className={`w-10 h-10 rounded-xl ${item.bgColor} flex items-center justify-center mb-3`}>
+              <item.icon size={20} className={item.color} />
             </div>
-
-            {/* 상태 뱃지 및 실무 액션 핸들러 */}
-            <div className="flex items-center justify-between md:justify-end gap-3 pt-3 md:pt-0 border-t md:border-t-0 border-zinc-100">
-              
-              <span className={`px-2.5 py-1 rounded-md text-xs font-bold border ${item.statusColor}`}>
-                {item.status}
-              </span>
-
-              {/* 3대 운영 핵심 인터랙션 단추 */}
-              <div className="flex items-center gap-1.5">
-                <button className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#6c60e1]/10 text-[#6c60e1] hover:bg-[#6c60e1] hover:text-white text-xs font-bold transition">
-                  <ArrowRight size={14} />
-                  <span>진행 전환</span>
-                </button>
-                <button className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-700 text-xs font-bold transition">
-                  <Eye size={14} />
-                  <span>상세보기</span>
-                </button>
-                <button className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-600 text-xs font-bold transition border border-emerald-100">
-                  <FileText size={14} />
-                  <span>계약서</span>
-                </button>
-              </div>
-            </div>
-
+            <p className="text-xs text-zinc-500 font-bold">{item.title}</p>
+            <h3 className="text-xl font-black mt-0.5">{item.value}</h3>
           </div>
         ))}
       </div>
 
+      {/* ✨ 3. 검색창 대신 들어간 [어제 / 오늘 / 내일] 실전 전환 탭 컨트롤 */}
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-zinc-100 p-1.5 rounded-xl  rounded-xl shadow-[0_0_15px_rgba(0,0,0,0.08)]">
+        
+        {/* 3대 핵심 날짜 이동 버튼군 */}
+        <div className="grid grid-cols-3 gap-1 flex-1 sm:flex-initial">
+          <button
+            onClick={() => setSelectedDate("2026-06-17")}
+            className={`py-2 px-4 text-sm font-bold rounded-xl transition-all duration-150 ${
+              selectedDate === "2026-06-17"
+                ? "bg-white text-zinc-950 shadow-sm"
+                : "text-zinc-500 hover:text-zinc-900"
+            }`}
+          >
+            어제 (17일)
+          </button>
+          <button
+            onClick={() => setSelectedDate("2026-06-18")}
+            className={`py-2 px-4 text-sm font-bold rounded-xl transition-all duration-150 ${
+              selectedDate === "2026-06-18"
+                ? "bg-[#6c60e1] text-white shadow-sm"
+                : "text-zinc-500 hover:text-zinc-900"
+            }`}
+          >
+            오늘 (18일)
+          </button>
+          <button
+            onClick={() => setSelectedDate("2026-06-19")}
+            className={`py-2 px-4 text-sm font-bold rounded-xl transition-all duration-150 ${
+              selectedDate === "2026-06-19"
+                ? "bg-white text-zinc-950 shadow-sm"
+                : "text-zinc-500 hover:text-zinc-900"
+            }`}
+          >
+            내일 (19일)
+          </button>
+        </div>
+
+        {/* 현재 보고 있는 날짜 인디케이터 & 달력 넘기기 확장 버튼 */}
+        <div className="flex items-center justify-between sm:justify-end gap-3 px-2 py-1 bg-white sm:bg-transparent rounded-xl sm:rounded-none">
+          <div className="flex items-center gap-1.5 text-sm font-black text-zinc-800">
+            <Calendar size={15} className="text-zinc-400" />
+            <span>{selectedDate}</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <button className="p-1.5 border border-zinc-200 rounded-lg bg-white hover:bg-zinc-50 text-zinc-600 transition">
+              <ChevronLeft size={14} />
+            </button>
+            <button className="p-1.5 border border-zinc-200 rounded-lg bg-white hover:bg-zinc-50 text-zinc-600 transition">
+              <ChevronRight size={14} />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* 게시판 영역 */}
+      <div className="bg-white rounded-xl shadow-sm border border-zinc-100 overflow-hidden">
+        <div className="grid grid-cols-12 gap-4 px-6 py-3 bg-zinc-50 text-[11px] font-bold text-zinc-500 uppercase">
+          <div className="col-span-2">성명</div>
+          <div className="col-span-2">카테고리</div>
+          <div className="col-span-5">문의 내용</div>
+          <div className="col-span-2 text-center">금액</div>
+          <div className="col-span-1 text-right">날짜</div>
+        </div>
+
+        <div className="divide-y divide-zinc-100">
+          {inquiryData.map((item) => (
+            <div key={item.id} className="grid grid-cols-12 gap-4 px-6 py-4 items-center hover:bg-zinc-50 text-sm">
+              <div className="col-span-2 font-bold text-zinc-900">{item.name}</div>
+              <div className="col-span-2 text-indigo-600 font-medium">{item.category}</div>
+              <div className="col-span-5 text-zinc-600 truncate">{item.content}</div>
+              <div className="col-span-2 text-center font-bold text-zinc-900">{item.price}</div>
+              <div className="col-span-1 text-right text-zinc-400 text-xs">{item.time.slice(5, 10).replace('.', '-')}</div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
