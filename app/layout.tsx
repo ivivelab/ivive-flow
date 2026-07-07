@@ -1,6 +1,6 @@
 import { Noto_Sans_KR } from 'next/font/google';
 import "./globals.css";
-import SimpleChat from '@/components/SimpleChat';      // 1. 새로 만든 SimpleChat 임포트
+import SimpleChat from '@/components/chat/SimpleChat';
 
 const notoSansKr = Noto_Sans_KR({ 
   subsets: ['latin'], 
